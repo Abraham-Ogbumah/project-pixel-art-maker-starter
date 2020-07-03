@@ -1,13 +1,15 @@
 const formItem = document.getElementById("sizePicker");
 formItem.addEventListener("submit", handleSubmit);
-const table = document.getElementById("pixelCanvas").addEventListener('click', setCellColor);
+const table = document.getElementById("pixelCanvas").addEventListener('mousedown', setCellColor);
 
-// Select color input
+// Function to set the value of the color to the color on the picker
 function setCellColor(e) {
     e.target.style.backgroundColor = document.getElementById('colorPicker').value;
 }
 
-// Select size input
+// This function does the following
+// Clears the Default behaviour for the submit submit button
+// The function passes the width and height arguments as parameters to the makeGrid function
 function handleSubmit(e) {
     e.preventDefault();
     var inputHeight = document.getElementById('inputHeight').value;
@@ -16,9 +18,8 @@ function handleSubmit(e) {
 }
 
 
-// When size is submitted by the user, call makeGrid()
+// The makeGrid function accepts the form inputs and creates the grid 
 function makeGrid(height, width) {
-    // Your code goes here!
     const mainTable = document.getElementById('pixelCanvas');
     mainTable.innerHTML = '';
 
