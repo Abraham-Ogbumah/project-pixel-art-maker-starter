@@ -4,7 +4,9 @@ const table = document.getElementById("pixelCanvas").addEventListener('mousedown
 
 // Function to set the value of the color to the color on the picker
 function setCellColor(e) {
-    e.target.style.backgroundColor = document.getElementById('colorPicker').value;
+    if (e.target.tagName.toLowerCase() === 'td') {
+        e.target.style.backgroundColor = document.getElementById('colorPicker').value;
+    }
 }
 
 // This function does the following
@@ -18,7 +20,13 @@ function handleSubmit(e) {
 }
 
 
-// The makeGrid function accepts the form inputs and creates the grid 
+/**
+ * @function makeGrid 
+ * @param   {number} height the number of rows in the table
+ * @param   {number} width the number of columns in the table
+ * @description Takes 2 integers and creates an HTML table
+ */
+
 function makeGrid(height, width) {
     const mainTable = document.getElementById('pixelCanvas');
     mainTable.innerHTML = '';
@@ -27,7 +35,6 @@ function makeGrid(height, width) {
         const newRow = document.createElement('tr');
         for (j = 0; j < width; j++) {
             const newCell = document.createElement('td');
-            // newCell.classList.add("clickAble");
             newRow.appendChild(newCell);
         }
         mainTable.appendChild(newRow);
